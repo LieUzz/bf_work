@@ -1,0 +1,7 @@
+
+
+SELECT p.NAME as ProfessorName, c.NAME as CourseName,
+FROM Professor p
+INNER JOIN schedule s on p.id = s.professor_id
+INNER JOIN Course c on c.id = s.course_id
+GROUP BY p.name, c.name;

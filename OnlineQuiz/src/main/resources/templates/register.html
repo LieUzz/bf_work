@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+</head>
+<style >
+    body,input{
+        margin: 0;
+        padding: 0;
+        background: #4A374A;
+    }
+    input{
+        display: inline-block;
+        background: #fff;
+    }
+    ul
+    {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        padding-top:6px;
+        padding-bottom:6px;
+    }
+    li
+    {
+        display:inline;
+    }
+    a:link,a:visited
+    {
+        font-weight:bold;
+        color:#FFFFFF;
+        background-color:#98bf21;
+        text-align:center;
+        padding:6px;
+        text-decoration:none;
+        text-transform:uppercase;
+    }
+    a:hover,a:active
+    {
+        background-color:#7A991A;
+    }
+    .container{
+        width: 100%;
+    }
+    .register-box{
+        position: relative;
+        height: 800px;
+        width: 800px;
+        top: 50px;
+        margin: 0 auto;
+        z-index: 99999;
+        background:#ffffff;
+        border: 7px solid #ccc;
+    }
+    .title-box{
+        position: absolute;
+        width: 300px;
+        height: 50px;
+        margin-left: 250px;
+        margin-top: 5px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 800;
+        color: #ff5000;
+        line-height: 50px;
+    }
+    .username-box{
+        position: absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top:100px;
+        margin-left:80px;
+        font-weight: 700;
+    }
+    .username-input{
+        display: inline-block;
+        margin-left: 58px;
+        /*background: green;*/
+    }
+    #username{
+        height: 35px;
+        width: 290px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+    .userPassword-box{
+        position: absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top:180px;
+        margin-left:80px;
+        font-weight: 700;
+    }
+    .userPassword-input{
+        display: inline-block;
+        margin-left: 61px;
+    }
+    #userPassword{
+        height: 35px;
+        width: 290px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+    .userRePassword-box{
+        position: absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top:260px;
+        margin-left:80px;
+        font-weight: 700;
+    }
+    .userRePassword-input{
+        display: inline-block;
+        margin-left: 75px;
+    }
+    #userRePassword{
+        height: 35px;
+        width: 290px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+    .userPhone-box{
+        position: absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top:340px;
+        margin-left:80px;
+        font-weight: 700;
+    }
+    .userPhone-input{
+        display: inline-block;
+        margin-left: 88px;
+    }
+    #userPhone{
+        height: 35px;
+        width: 290px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+    .userEmail-box{
+        position: absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top:420px;
+        margin-left:80px;
+        font-weight: 700;
+    }
+    .userEmail-input{
+        display: inline-block;
+        margin-left: 92px;
+    }
+    #userEmail{
+        height: 35px;
+        width: 290px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .userGender-box{
+        position: absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top:500px;
+        margin-left:82px;
+        font-weight: 700;
+    }
+    .userGender-input{
+        display: inline-block;
+        margin-left: 62px;
+    }
+    .require{
+        color: red;
+    }
+    .submit-box{
+        position:absolute;
+        width: 80px;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 580px;
+        margin-left:200px;
+        border-radius: 5px;
+        background: grey;
+    }
+    #submit-button{
+        display: inline-block;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        background: red;
+    }
+    .goLogin-box{
+        position:absolute;
+        width: 150px;
+        height: 20px;
+        margin-top: 600px;
+        margin-left:320px;
+
+    }
+    #error_box{
+        position:absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 700px;
+        margin-left:100px;
+        border-radius: 5px;
+        background: pink;
+    }
+
+</style>
+<body>
+<ul>
+    <li><a th:href="@{/home}">Home </a></li>
+    <li><a th:href="@{/login}">Login </a></li>
+    <li><a th:href="@{/register}">Registration </a></li>
+    <li><a th:href="@{/feedback}">Feedback </a></li>
+    <li><a th:href="@{/contact}">Contact Us </a></li>
+
+</ul>
+<div class="container">
+    <div class="register-box">
+        <div class="title-box">
+            <span>REGISTER</span>
+        </div>
+        <form action="/login" method="post" onSubmit="return fnRegister()">
+            <div class="username-box">
+                <span class="require">*</span>
+                <label for="username">Username</label>
+                <div class="username-input">
+                    <input type="text" id="username" name="name" placeholder="  Please Enter Your Username" />
+                </div>
+            </div>
+
+            <div class="userPassword-box">
+                <span class="require">*</span>
+                <label for="userPassword">Password</label>
+                <div class="userPassword-input">
+                    <input type="password" id="userPassword" name="password" placeholder="  Please Enter your Password" />
+                </div>
+            </div>
+
+            <div class="userRePassword-box">
+                <span class="require">*</span>
+                <label for="userRePassword">Confirm</label>
+                <div class="userRePassword-input">
+                    <input type="password" id="userRePassword" name="userRePassword" placeholder="  Please Confirm Your Password" />
+                </div>
+            </div>
+
+            <div class="userPhone-box">
+                <span class="require">*</span>
+                <label for="userPhone">Phone</label>
+                <div class="userPhone-input">
+                    <input type="text" id="userPhone" name="phone" placeholder="  Please Enter Your Phone Number" />
+                </div>
+            </div>
+
+            <div class="userEmail-box">
+                <span class="require">*</span>
+                <label for="userEmail">Email</label>
+                <div class="userEmail-input">
+                    <input type="text" id="userEmail" name="email" placeholder="  Please Enter Your Email" />
+                </div>
+            </div>
+
+            <div class="userGender-box">
+                <span class="require">*</span>
+                <label >Gender</label>
+                <div class="userGender-input">
+                    <input type="radio" id="userGender_01" name="gender" value="0" checked="checked" />Male
+                    <input type="radio" id="userGender_02" name="gender" value="1" />Female
+                </div>
+            </div>
+
+            <div class="submit-box">
+                <button id= "submit-button" class="btn btn-primary" onclick="fnRegister()">submit</button>
+            </div>
+
+            <div class="goLogin-box">
+                <a href="/login" style="text-decoration: none;">Already have a account？Go login</a>
+            </div>
+
+            <div th:if="${param.error}" id="error_box" class="alert" >
+                Register failed, username have been registered.
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

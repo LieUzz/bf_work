@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+    <p th:text="'Hi, ' + ${username}"></p>
+    <p th:text="'This is ' + ${quizname} + 'quiz'"></p>
+    <p th:text="'You took this quiz at ' + ${starttime} + ', and finished this exam at' + ${endtime}"></p>
+    <p th:text="'Your final score is ' + ${score}"></p>
+    <p th:text="'You ' + ${passornot} + ' this quiz.'"></p>
+
+    <h3> The correct answer is as follows </h3>
+
+    <p th:text="'Question ' + ${qidx1} + ': correct answer is  ' + ${q1} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a1}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx2} + ': correct answer is  ' + ${q2} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a2}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx3} + ': correct answer is  ' + ${q3} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a3}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx4} + ': correct answer is  ' + ${q4} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a4}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx5} + ': correct answer is  ' + ${q5} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a5}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx6} + ': correct answer is  ' + ${q6} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a6}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx7} + ': correct answer is  ' + ${q7} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a7}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx8} + ': correct answer is  ' + ${q8} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a8}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx9} + ': correct answer is  ' + ${q9} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a9}" style="display: inline-block"></p> <br>
+
+    <p th:text="'Question ' + ${qidx10} + ': correct answer is  ' + ${q10} + '     '"></p>
+    <p th:text="'Your answer is :' + ${a10}" style="display: inline-block"></p> <br>
+
+    <div id="submit-box">
+        <a href="/home"><input type="button" class="btn btn-info" value="anthor quiz"></a>>
+    </div>
+</body>
+</html>

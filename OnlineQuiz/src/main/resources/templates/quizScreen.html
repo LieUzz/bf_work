@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Quiz！</title>
+    <script type="text/javascript" src="../static/jsp/lx.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/lx.css">
+
+</head>
+
+<style>
+    body,input{
+        margin: 0;
+        padding: 0;
+        background: #4A374A;
+    }
+    input{
+        display: inline-block;
+        background: #fff;
+    }
+    .container{
+        width: 100%;
+    }
+    .quiz-screen-box{
+        position: relative;
+        height: 1200px;
+        width: 2000px;
+        top: 50px;
+        margin: 0 auto;
+        z-index: 99999;
+        background:#ffffff;
+        border: 7px solid #ccc;
+    }
+    .title-box{
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        margin-left: 800px;
+        margin-top: 5px;
+        text-align: center;
+        font-size: 40px;
+        font-weight: 800;
+        color: #ff5000;
+        line-height: 50px;
+    }
+    .question-box{
+        position: absolute;
+        width: 600px;
+        height: 40px;
+        line-height: 40px;
+        margin-top:200px;
+        margin-left:300px;
+        font-weight: 700;
+        font-size: 30px;
+    }
+    .opt-box {
+        position: absolute;
+        margin-top:400px;
+        margin-left:400px;
+        font-weight: 700;
+        font-size: 30px;
+
+    }
+    .options{
+        display: inline-block;
+        margin-left: 20px;
+    }
+    .change-question-box{
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        font-size: 20px;
+        margin-left: 300px;
+        margin-top: 500px;
+    }
+    .button-prev{
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        margin-left: 300px;
+        margin-top: 1000px;
+    }
+
+    .button-next{
+        position: absolute;
+        margin-left: 1700px;
+        margin-top: 1000px;
+    }
+
+
+</style>
+
+<body>
+<div class="container">
+    <div class="quiz-screen-box">
+        <form action="/quizScreen" method="post" onSubmit="return fnChange()">
+            <div class="title-box">
+                <span>
+                    <p th:text="'Quiz ' +${quiztype} +' Time'"></p>
+                </span>
+            </div>
+
+            <div class="question-box">
+                <span>
+                    <p th:text="'Question ' + ${qNumber} + ':  '"></p>
+                </span>
+                <span>
+                    <p th:text="${question}"></p>
+                </span>
+
+            </div>
+
+            <div class="opt-box">
+                <form action="/????">
+                    <input type="checkbox" id="opt1" name="opt1" value="1">
+                    <div class="options">
+                        <p th:text="${opt1}"></p>
+                    </div><br>
+                    <input type="checkbox" id="opt2" name="option" value="2">
+                    <div class="options">
+                        <p th:text="${opt2}"></p>
+                    </div><br>
+                    <input type="checkbox" id="opt3" name="option" value="3">
+                    <div class="options">
+                        <p th:text="${opt3}">
+                    </div><br>
+                    <input type="checkbox" id="opt4" name="option" value="4">
+                    <div class="options">
+                        <p th:text="${opt4}"></p>
+                    </div><br>
+
+                </form>
+            </div>
+
+
+            <div id="submit-box">
+
+                <a href="/quizResult" class="confirmation"><input type="button" class="btn btn-info" value="Submit"></a>>
+            </div>
+
+            <script type="text/javascript">
+                var elems = document.getElementsByClassName('confirmation');
+                var confirmIt = function (e) {
+                    if (!confirm('Are you sure?')) e.preventDefault();
+                };
+                for (var i = 0, l = elems.length; i < l; i++) {
+                    elems[i].addEventListener('click', confirmIt, false);
+                }
+            </script>
+
+            <div>
+                <div th:switch="${qNumber}">
+                    <div th:case="'1'">
+                        <div class="button-next">
+                            <a href="/next"><input type="button" class="btn btn-info" name="prevOrNext" value="Next" th:onclick="fnChange()"></a>
+                        </div>
+                    </div>
+                    <div th:case="'10'">
+                        <div class="button-prev">
+                            <a href="/prev"><input type="button" class="btn btn-info" name="prevOrNext" value="Prev" th:onclick="fnChange()"></a>
+                        </div>
+                    </div>
+                    <div th:case=*>
+                        <div class="button-prev">
+                            <a href="/prev"><input type="button" class="btn btn-info" name="prevOrNext" value="Prev" th:onclick="fnChange()"></a>
+                        </div>
+                        <div class="button-next">
+                            <a href="/next"><input type="button" class="btn btn-info" name="prevOrNext" value="Next" th:onclick="fnChange()"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+
+</html>

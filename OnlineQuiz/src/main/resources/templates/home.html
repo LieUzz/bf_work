@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Quiz！</title>
+    <script type="text/javascript" src="../static/jsp/lx.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/lx.css">
+
+</head>
+<style>
+    body,input{
+        margin: 0;
+        padding: 0;
+        /*background: #4A374A;*/
+    }
+    ul
+    {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        padding-top:6px;
+        padding-bottom:6px;
+    }
+    li
+    {
+        display:inline;
+    }
+    a:link,a:visited
+    {
+        font-weight:bold;
+        color:#FFFFFF;
+        background-color:#98bf21;
+        text-align:center;
+        padding:6px;
+        text-decoration:none;
+        text-transform:uppercase;
+    }
+    a:hover,a:active
+    {
+        background-color:#7A991A;
+    }
+
+</style>
+
+
+<body>
+<div>
+    <ul>
+        <li><a th:href="@{/home}">Home </a></li>
+        <li><a th:href="@{/login}">Login </a></li>
+        <li><a th:href="@{/register}">Registration </a></li>
+        <li><a th:href="@{/feedback}">Feedback </a></li>
+        <li><a th:href="@{/contact}">Contact Us </a></li>
+    </ul>
+    <h1>QUIZ</h1>
+    <form action="/quizScreen" method="post" onSubmit="return fnQuiz()">
+        <div class="quiz-box">
+            <span class="require">*</span>
+            <label >There are several quiz, choose one to take a quiz. </label>
+            <div class="quiz-input">
+                <input type="radio" id="math" name="quizType" value="math" checked="checked" />Math
+                <input type="radio" id="history" name="quizType" value="history" />History
+                <input type="radio" id="biology" name="quizType" value="biology" />Biology
+            </div>
+        </div>
+        <div class="submit-box">
+            <button id= "submit-button" class="btn btn-primary" onclick="fnQuiz()">submit</button>
+        </div>
+
+
+    </form>
+</div>
+</body>
+</html>
